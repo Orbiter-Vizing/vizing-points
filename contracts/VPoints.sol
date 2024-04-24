@@ -6,6 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 error UnauthorizedMiner(address miner);
 error InvalidMiner(address miner);
 error InvalidReceiver(address receiver);
+error ArrayLengthMismatch();
 
 contract VPoints is Ownable {
     address private _miner;
@@ -75,6 +76,23 @@ contract VPoints is Ownable {
     ) public onlyMiner {
         data;
         _mint(to, amount);
+    }
+
+    function mintBatch(
+        address[] calldata tos,
+        uint256[] calldata amounts,
+        string[] calldata datas
+    ) public onlyMiner {
+        if (tos.length != amounts.length) {
+            revert ArrayLengthMismatch();
+        }
+        if (tos.length != datas.length) {
+            revert ArrayLengthMismatch();
+        }
+
+        for (uint i = 0; i < tos.length; i++) {
+            _mint(tos[i], amounts[i]);
+        }
     }
 
     function _mint(address account, uint256 value) internal {
