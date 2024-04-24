@@ -4,6 +4,8 @@ This project demonstrates a basic Hardhat use case. It comes with a sample contr
 
 ## Record points
 
+> Before integrating the Vizing points system, DApp developers need to provide Vizing with the miner, point name, and point symbol to apply for the use of the points system (currently, you can submit an issue in this repository to apply). Once Vizing receives the application, they will assign a points contract to the DApp. Miners can then record user points through the following two methods.
+
 ### Recording a single points
 
 > Invoking the `mint` method of the VPoints contract.
