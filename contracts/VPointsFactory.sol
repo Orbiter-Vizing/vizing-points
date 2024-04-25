@@ -5,19 +5,17 @@ import {VPoints} from "./VPoints.sol";
 import {Context} from "@openzeppelin/contracts/utils/Context.sol";
 
 contract VPointsFactory is Context {
-    event Created(address indexed owner, address vPoints);
+    event Created(address indexed owner, address indexed vPoints);
 
     constructor() {}
 
     function createVPoints(
-        address miner,
         string calldata name,
         string calldata symbol
     ) external {
         VPoints vPoints = new VPoints{
             salt: keccak256(abi.encode(_msgSender(), name, symbol))
-        }(name, symbol);
-        vPoints.updateMiner(miner);
+        }(_msgSender(), name, symbol);
 
         emit Created(_msgSender(), address(vPoints));
     }

@@ -47,6 +47,7 @@ export const chainIds = {
   ganache: 1337,
   localhost: 313371,
   "vizing-testnet": 28516,
+  "vizing-mainnet": 28518,
 };
 
 const accountsBalance = ethers.parseEther("100") + "";
@@ -99,6 +100,9 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
       break;
     case "vizing-testnet":
       jsonRpcUrl = "https://rpc-sepolia.vizing.com";
+      break;
+    case "vizing-mainnet":
+      jsonRpcUrl = "https://rpc.vizing.com";
       break;
     default:
       jsonRpcUrl = "https://" + chain + ".infura.io/v3/" + infuraApiKey;
@@ -163,6 +167,7 @@ const config: HardhatUserConfig = {
     "Arbitrum-Sepolia": getChainConfig("Arbitrum-Sepolia"),
     "Base-Sepolia": getChainConfig("Base-Sepolia"),
     "vizing-testnet": getChainConfig("vizing-testnet"),
+    "vizing-mainnet": getChainConfig("vizing-mainnet"),
   },
 
   solidity: {

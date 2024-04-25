@@ -21,9 +21,10 @@ contract VPoints is Ownable {
     event Minted(address indexed account, uint value);
 
     constructor(
+        address owner_,
         string memory name_,
         string memory symbol_
-    ) Ownable(_msgSender()) {
+    ) Ownable(owner_) {
         _name = name_;
         _symbol = symbol_;
     }
