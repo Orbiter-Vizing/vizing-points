@@ -2,6 +2,11 @@
     {
         "inputs": [
             {
+                "internalType": "address",
+                "name": "owner_",
+                "type": "address"
+            },
+            {
                 "internalType": "string",
                 "name": "name_",
                 "type": "string"

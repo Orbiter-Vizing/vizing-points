@@ -14,7 +14,7 @@
                 "type": "address"
             },
             {
-                "indexed": false,
+                "indexed": true,
                 "internalType": "address",
                 "name": "vPoints",
                 "type": "address"
@@ -25,11 +25,6 @@
     },
     {
         "inputs": [
-            {
-                "internalType": "address",
-                "name": "miner",
-                "type": "address"
-            },
             {
                 "internalType": "string",
                 "name": "name",
