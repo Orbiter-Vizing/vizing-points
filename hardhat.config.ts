@@ -31,7 +31,7 @@ if (!infuraApiKey) {
 export const chainIds = {
   "arbitrum-mainnet": 42161,
   "arbitrum-goerli": 421613,
-  "zkSync-Era-Testnet": 280,
+  "zksync-era-testnet": 280,
   avalanche: 43114,
   bsc: 56,
   hardhat: 31337,
@@ -41,8 +41,8 @@ export const chainIds = {
   "polygon-mainnet": 137,
   "polygon-mumbai": 80001,
   sepolia: 11155111,
-  "Arbitrum-Sepolia": 421614,
-  "Base-Sepolia": 84532,
+  "arbitrum-sepolia": 421614,
+  "base-sepolia": 84532,
   goerli: 5,
   ganache: 1337,
   localhost: 313371,
@@ -83,7 +83,7 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
     case "optimism-goerli":
       jsonRpcUrl = "https://optimism-goerli.public.blastapi.io";
       break;
-    case "zkSync-Era-Testnet":
+    case "zksync-era-testnet":
       jsonRpcUrl = "https://testnet.era.zksync.dev";
       break;
     case "ganache":
@@ -92,10 +92,10 @@ function getChainConfig(chain: keyof typeof chainIds): NetworkUserConfig {
     case "localhost":
       jsonRpcUrl = "http://127.0.0.1:8545";
       break;
-    case "Arbitrum-Sepolia":
+    case "arbitrum-sepolia":
       jsonRpcUrl = "https://sepolia-rollup.arbitrum.io/rpc";
       break;
-    case "Base-Sepolia":
+    case "base-sepolia":
       jsonRpcUrl = "https://rpc.notadegen.com/base/sepolia";
       break;
     case "vizing-testnet":
@@ -162,10 +162,10 @@ const config: HardhatUserConfig = {
     goerli: getChainConfig("goerli"),
     "arbitrum-goerli": getChainConfig("arbitrum-goerli"),
     "optimism-goerli": getChainConfig("optimism-goerli"),
-    "era-goerli": getChainConfig("zkSync-Era-Testnet"),
+    "zksync-era-goerli": getChainConfig("zksync-era-testnet"),
     ganache: getChainConfig("ganache"),
-    "Arbitrum-Sepolia": getChainConfig("Arbitrum-Sepolia"),
-    "Base-Sepolia": getChainConfig("Base-Sepolia"),
+    "arbitrum-sepolia": getChainConfig("arbitrum-sepolia"),
+    "base-sepolia": getChainConfig("base-sepolia"),
     "vizing-testnet": getChainConfig("vizing-testnet"),
     "vizing-mainnet": getChainConfig("vizing-mainnet"),
   },
