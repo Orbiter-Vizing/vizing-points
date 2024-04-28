@@ -1,6 +1,6 @@
 # Vizing Points
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a Hardhat Ignition module that deploys that contract.
+The project aims to provide DApp developers with a universal points system, enabling point records on the blockchain to enhance the transparency of points. Additionally, it can help DApps reduce the development and maintenance costs associated with issuing points.
 
 ## Record points
 
