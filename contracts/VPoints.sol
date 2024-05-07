@@ -7,6 +7,7 @@ error UnauthorizedMiner(address miner);
 error InvalidMiner(address miner);
 error InvalidReceiver(address receiver);
 error ArrayLengthMismatch();
+error InsufficientBalance(address sender, uint256 balance, uint256 needed);
 
 contract VPoints is Ownable {
     address private _miner;
@@ -19,6 +20,7 @@ contract VPoints is Ownable {
 
     event UpdatedMiner(address indexed previousMiner, address indexed newMiner);
     event Minted(address indexed account, uint value);
+    event Burned(address indexed account, uint value);
 
     constructor(
         address owner_,
@@ -96,6 +98,32 @@ contract VPoints is Ownable {
         }
     }
 
+    function burn(
+        address to,
+        uint256 amount,
+        string calldata data
+    ) public onlyMiner {
+        data;
+        _burn(to, amount);
+    }
+
+    function burnBatch(
+        address[] calldata tos,
+        uint256[] calldata amounts,
+        string[] calldata datas
+    ) public onlyMiner {
+        if (tos.length != amounts.length) {
+            revert ArrayLengthMismatch();
+        }
+        if (tos.length != datas.length) {
+            revert ArrayLengthMismatch();
+        }
+
+        for (uint i = 0; i < tos.length; i++) {
+            _burn(tos[i], amounts[i]);
+        }
+    }
+
     function _mint(address account, uint256 value) internal {
         if (account == address(0)) {
             revert InvalidReceiver(address(0));
@@ -110,5 +138,27 @@ contract VPoints is Ownable {
         }
 
         emit Minted(account, value);
+    }
+
+    function _burn(address account, uint256 value) internal {
+        if (account == address(0)) {
+            revert InvalidReceiver(address(0));
+        }
+
+        uint256 fromBalance = _balances[account];
+        if (fromBalance < value) {
+            revert InsufficientBalance(account, fromBalance, value);
+        }
+        unchecked {
+            // Overflow not possible: value <= fromBalance <= totalSupply.
+            _balances[account] = fromBalance - value;
+        }
+
+        unchecked {
+            // Overflow not possible: value <= totalSupply or value <= fromBalance <= totalSupply.
+            _totalSupply -= value;
+        }
+
+        emit Burned(account, value);
     }
 }
