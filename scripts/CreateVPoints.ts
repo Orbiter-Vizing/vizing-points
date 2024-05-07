@@ -1,5 +1,4 @@
-import { parseEther, parseUnits } from "ethers";
-import hre, { ethers } from "hardhat";
+import hre from "hardhat";
 
 async function main() {
   const vPointsFactoryAddress = (process.env["VPOINTS_FACTORY"] || "").trim();
