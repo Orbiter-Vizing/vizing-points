@@ -32,9 +32,14 @@ The project aims to provide DApp developers with a universal points system, enab
 
 ## Query points API
 
+### Base URLs
+
+- Production: https://openapi.vizing.com/sdk
+- Testnet: -
+
 ### Points information
 
-`GET` /points/info
+`GET` points/info
 
 ##### Request: `Object`
 
@@ -55,7 +60,7 @@ The project aims to provide DApp developers with a universal points system, enab
 
 ### Points records
 
-`GET` /points/records
+`GET` points/records
 
 ##### Request: `Object`
 
@@ -77,7 +82,7 @@ The project aims to provide DApp developers with a universal points system, enab
 
 ### Points rankings by time range
 
-`GET` /points/rankings
+`GET` points/rankings
 
 ##### Request: `Object`
 
@@ -100,7 +105,7 @@ The project aims to provide DApp developers with a universal points system, enab
 
 ### Account points
 
-`GET` /points/account
+`GET` points/account
 
 #### Request: `Object`
 

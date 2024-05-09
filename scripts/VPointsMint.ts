@@ -20,8 +20,8 @@ async function main() {
 
   const vPointsWithSigner = vPoints.connect(signer);
 
-  for (let i = 0; i < 100; i++) {
-    const to = Wallet.createRandom().address;
+  for (let i = 0; i < 5; i++) {
+    const to = signer.address;
     const amount = parseEther("100");
     const transaction = await vPointsWithSigner.mint(
       to,
